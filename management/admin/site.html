@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сайт · Управление продуктами СНК</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../../sncard/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../designs/styles.css">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="app" data-product="admin">
+<!-- @sprite:start -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 16 16"><path d="M10 4L6 8l4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 16 16"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 16 16"><path d="M3 8h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 2h-14zM10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-sidebar" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 4.5v15M15.5 10l-2 2 2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5M6 9.5V19h4.5v-5h3v5H18V9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><path d="M3.5 12h4l2-5 4 10 2-5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-station" viewBox="0 0 24 24"><path d="M5 20V5.5A1.5 1.5 0 0 1 6.5 4h6A1.5 1.5 0 0 1 14 5.5V20M3.5 20h12M7.5 7.5h4v3.5h-4zM14 9h2.5a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 0 3 0V8l-2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-requests" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 3v2.5h6V3M8.5 11h7M8.5 14.5h7M8.5 18h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16.5V11M11.5 16.5V6.5M16 16.5v-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-shift" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 9.5h16M8.5 3v4M15.5 3v4M8 13.5h3M8 16.5h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 5.5A1.5 1.5 0 0 1 6.5 4H19v14H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 8h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8.5l-8 4-8-4zM4 8l8 4 8-4M12 12v8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-report" viewBox="0 0 24 24"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5M10 13h5M10 16.5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-org" viewBox="0 0 24 24"><path d="M4 20.5h16M6 20.5V6.5L12 3.5l6 3v14M9.5 9h1M13.5 9h1M9.5 12.5h1M13.5 12.5h1M10.5 20.5v-4h3v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9.5" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 19.5a6 6 0 0 1 12 0M16 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.2a6 6 0 0 1 3 5.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 12l8-8M16 7l2.5 2.5M14 9l2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-update" viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5v4h-4M12 8.5V12l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-log" viewBox="0 0 24 24"><path d="M8 6h11M8 12h11M8 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5v2.2M12 18.3v2.2M20.5 12h-2.2M5.7 12H3.5M18 6l-1.6 1.6M7.6 16.4 6 18M18 18l-1.6-1.6M7.6 7.6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9.8 9.5a2.3 2.3 0 1 1 3.3 2.1c-.7.4-1.1.9-1.1 1.7v.4M12 16.8h.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M14 4.5H6.5A1.5 1.5 0 0 0 5 6v12a1.5 1.5 0 0 0 1.5 1.5H14M10 12h10M16.5 8.5 20 12l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 16 16"><path d="M2.5 3.5h11L9.5 8.5v4l-3 1.5V8.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-columns" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 4.5v15M14.5 4.5v15" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18" cy="12" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M5 19l1-4 10-10 3 3-10 10zM14 7l3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 7V4.5h4V7M7 7l1 13h8l1-13M10.5 11v5M13.5 11v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 8.5V6a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 15.5h2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 0 1-12.2 4.7M5 12a7 7 0 0 1 12.2-4.7M17.5 3.5v4h-4M6.5 20.5v-4h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M3.5 6.5 9 4.5l6 2 5.5-2v13l-5.5 2-6-2-5.5 2zM9 4.5v13M15 6.5v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 10h16M4 14.5h16M10 10v9" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.3l2.7 2.7L16 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5.5M12 16.3h.01" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4 21 19.5H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4.5M12 17h.01" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v5.5M12 7.7h.01" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M4 4l16 16M8.5 13.5a5 5 0 0 1 5.5-1M5 10.3a9.5 9.5 0 0 1 4-2M12.5 7.6a9.5 9.5 0 0 1 6.5 2.7M12 17.5h.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-file" viewBox="0 0 48 48"><path d="M13 5h15l9 9v29H13zM28 5v9h9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M24 36V22M18.5 27.5 24 22l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-fuel" viewBox="0 0 24 24"><path d="M12 3.5s-5.5 6-5.5 10a5.5 5.5 0 0 0 11 0c0-4-5.5-10-5.5-10z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M4 4l16 16M9.9 5.8A9.7 9.7 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.7M6.3 7.5A16 16 0 0 0 2.5 12S6 18.5 12 18.5a9.3 9.3 0 0 0 4.3-1M9.9 9.9a3 3 0 0 0 4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M13.5 4.5h6v6M19.5 4.5l-8 8M17.5 13.5v5a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 18.5v-10A1.5 1.5 0 0 1 6 7h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 12h16M12 4c2.2 2.3 3.2 5 3.2 8s-1 5.7-3.2 8c-2.2-2.3-3.2-5-3.2-8s1-5.7 3.2-8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-copies" viewBox="0 0 24 24"><rect x="4" y="8" width="11" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V5.5A1.5 1.5 0 0 1 9.5 4h9A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H15M7 12h5M7 15.5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v3.2h3.2M12 8v4.2l2.8 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6.5 13.5 12 19l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-grip" viewBox="0 0 24 24"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+<!-- @sprite:end -->
+<a class="skip-link" href="#main">К содержимому</a>
+<div class="app-shell">
+<!-- @sidebar:start -->
+<aside class="sb" id="sidebar" aria-label="Разделы">
+  <a class="sb__brand" href="../dashboard.html" aria-label="Управление продуктами СНК — главная">
+    <svg viewBox="0 0 120 48" aria-hidden="true"><path d="M38 11H22.5A12.5 12.5 0 0 0 10 23.5v1A12.5 12.5 0 0 0 22.5 37H38 M48 11v26 M72 11v26 M48 24h24 M84 11v26 M106 11L86.5 24 106 37" fill="none" stroke="#D32F2F" stroke-width="6" stroke-linecap="square"/></svg>
+    <b class="sb__label">Управление<br>продуктами</b>
+  </a>
+  <nav class="sb__products" aria-label="Продукт">
+    <a class="sb__product" href="../azs/monitoring.html"><span class="sb__code" aria-hidden="true">АЗС</span><span class="sb__label">СНК-АЗС</span></a>
+    <a class="sb__product" href="../office/shift.html"><span class="sb__code" aria-hidden="true">ОФ</span><span class="sb__label">СНК-Офис</span></a>
+    <a class="sb__product" href="../pa/copies.html"><span class="sb__code" aria-hidden="true">ЛК</span><span class="sb__label">СНК-Личный кабинет</span></a>
+    <a class="sb__product" href="../admin/organizations.html" aria-current="true"><span class="sb__code" aria-hidden="true">АДМ</span><span class="sb__label">Администрирование</span></a>
+  </nav>
+  <nav class="sb__nav" aria-label="Разделы Администрирование">
+    <div class="sb__group">
+      <a class="sb__link" href="../dashboard.html"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg><span class="sb__label">Главная</span></a>
+    </div>
+    <div class="sb__group">
+      <span class="sb__title">Клиенты</span>
+      <a class="sb__link" href="../admin/organizations.html"><svg class="ico" aria-hidden="true"><use href="#i-org"/></svg><span class="sb__label">Организации</span></a>
+      <a class="sb__link" href="../admin/users.html"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><span class="sb__label">Пользователи</span></a>
+      <a class="sb__link" href="../admin/issuers.html"><svg class="ico" aria-hidden="true"><use href="#i-key"/></svg><span class="sb__label">Эмитенты</span></a>
+      <a class="sb__link" href="../admin/services.html"><svg class="ico" aria-hidden="true"><use href="#i-station"/></svg><span class="sb__label">Внешние ТО</span></a>
+      <a class="sb__link" href="../admin/licenses.html"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><span class="sb__label">Лицензии</span></a>
+      <a class="sb__link" href="../admin/catalogues.html"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg><span class="sb__label">Справочник сервисов</span></a>
+    </div>
+    <div class="sb__group">
+      <span class="sb__title">Обновления</span>
+      <a class="sb__link" href="../admin/version-release.html"><svg class="ico" aria-hidden="true"><use href="#i-update"/></svg><span class="sb__label">Выпуск обновления</span></a>
+      <a class="sb__link" href="../admin/upload-release.html"><svg class="ico" aria-hidden="true"><use href="#i-upload"/></svg><span class="sb__label">Загрузка обновления</span></a>
+      <a class="sb__link" href="../admin/app-update.html"><svg class="ico" aria-hidden="true"><use href="#i-refresh"/></svg><span class="sb__label">Обновление приложения</span></a>
+      <a class="sb__link" href="../admin/change-log.html"><svg class="ico" aria-hidden="true"><use href="#i-log"/></svg><span class="sb__label">Журнал изменений</span></a>
+    </div>
+    <div class="sb__group">
+      <span class="sb__title">Сервис</span>
+      <a class="sb__link" href="../admin/create-news.html"><svg class="ico" aria-hidden="true"><use href="#i-edit"/></svg><span class="sb__label">Создание новости</span></a>
+      <a class="sb__link" href="../admin/config.html"><svg class="ico" aria-hidden="true"><use href="#i-settings"/></svg><span class="sb__label">Конфигурация</span></a>
+    </div>
+    <div class="sb__group">
+      <span class="sb__title">Сайты</span>
+      <a class="sb__link" href="../admin/sites.html" aria-current="true"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg><span class="sb__label">Сайты</span></a>
+    </div>
+  </nav>
+  <div class="sb__foot">
+    <a class="sb__link" href="../ui-kit.html"><svg class="ico" aria-hidden="true"><use href="#i-help"/></svg><span class="sb__label">Инструкция</span></a>
+    <button class="sb__link sb__collapse" type="button" data-sb-collapse aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-sidebar"/></svg><span class="sb__label">Свернуть меню</span></button>
+  </div>
+</aside>
+<!-- @sidebar:end -->
+  <div class="app-main">
+<!-- @top:start -->
+<header class="top">
+  <button class="icon-btn top__burger" type="button" data-sb-open aria-controls="sidebar" aria-expanded="false" aria-label="Открыть меню"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  <nav class="crumbs" aria-label="Вы здесь"><a href="../admin/organizations.html">Администрирование</a><span class="crumbs__sep" aria-hidden="true">/</span><span class="crumbs__group">Сайты</span><span class="crumbs__sep" aria-hidden="true">/</span><a href="../admin/sites.html">Сайты</a><span class="crumbs__sep" aria-hidden="true">/</span><span aria-current="page">Сайт</span></nav>
+  <div class="sel orgsw" id="org-switch" data-placeholder="Все организации">
+    <button class="sel__btn orgsw__btn" type="button" data-pop="lb-orgsw" aria-expanded="false" aria-controls="lb-orgsw" aria-label="Организация: все"><svg class="ico orgsw__ico" aria-hidden="true"><use href="#i-org"/></svg><span class="sel__value"></span><svg class="ico" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+    <div class="pop" id="lb-orgsw">
+      <div class="opts__search"><input class="in" type="search" placeholder="Название организации" aria-label="Поиск организации"></div>
+      <div class="opts" role="listbox" aria-label="Организация, с которой вы работаете">
+        <div class="opt" role="option" data-value="0" data-label="Все организации" aria-selected="true"><span class="opt__text">Все организации</span><small>все данные</small></div>
+        <div role="group" aria-label="Клиенты"><div class="opts__group" aria-hidden="true">Клиенты</div><div class="opt" role="option" data-value="1" data-type="1" data-label="Демо-Ойл" aria-selected="false"><span class="opt__text">ООО «Демо-Ойл»</span><small>Агент</small></div><div class="opt" role="option" data-value="2" data-type="2" data-label="Пример-Трейд" aria-selected="false"><span class="opt__text">ООО «Пример-Трейд»</span><small>Продавец</small></div><div class="opt" role="option" data-value="3" data-type="1" data-label="Тестовая сеть" aria-selected="false"><span class="opt__text">АО «Тестовая сеть»</span><small>Агент</small></div><div class="opt" role="option" data-value="4" data-type="2" data-label="ИП Образцов" aria-selected="false"><span class="opt__text">ИП Образцов</span><small>Продавец</small></div></div>
+        <div role="group" aria-label="Партнёры"><div class="opts__group" aria-hidden="true">Партнёры</div><div class="opt" role="option" data-value="5" data-type="4" data-label="Демо-Заправка" aria-selected="false"><span class="opt__text">ООО «Демо-Заправка»</span><small>Партнёр</small></div></div>
+        <div role="group" aria-label="Сервисы"><div class="opts__group" aria-hidden="true">Сервисы</div><div class="opt" role="option" data-value="6" data-type="3" data-label="Пример-Pay" aria-selected="false"><span class="opt__text">ООО «Пример-Pay»</span><small>Сервис</small></div></div>
+      </div>
+      <p class="orgsw__hint">Данные всех разделов показываются по выбранной организации.</p>
+    </div>
+  </div>
+  <div class="top__right">
+    <label class="gsearch"><span class="sr-only">Поиск по разделам</span><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><input class="gsearch__input" type="search" placeholder="Поиск по разделам" data-gsearch list="gsearch-list" autocomplete="off"><span class="kbd" aria-hidden="true">/</span></label>
+    <datalist id="gsearch-list"><option value="Мониторинг ТО" data-href="../azs/monitoring.html"></option><option value="Информация по ТО" data-href="../azs/information.html"></option><option value="Активность ТО" data-href="../azs/services-activity.html"></option><option value="Контроль заявок" data-href="../azs/requests.html"></option><option value="Статистика" data-href="../azs/statistic.html"></option><option value="Информация по смене" data-href="../office/shift.html"></option><option value="Точки обслуживания" data-href="../office/catalogue/service-points.html"></option><option value="Товары" data-href="../office/catalogue/goods.html"></option><option value="Юридические лица" data-href="../office/catalogue/legal-entities.html"></option><option value="Ведомости" data-href="../office/catalogue/statements.html"></option><option value="Инкассаторы" data-href="../office/catalogue/cash-collectors.html"></option><option value="Направления инкассации" data-href="../office/catalogue/cash-collection-directions.html"></option><option value="Операторы" data-href="../office/catalogue/operators.html"></option><option value="Поставщики" data-href="../office/catalogue/contractors.html"></option><option value="Грузоперевозчики" data-href="../office/catalogue/cargo-carriers.html"></option><option value="Грузоотправители (грузополучатели)" data-href="../office/catalogue/shippers.html"></option><option value="Поставки ТМЦ" data-href="../office/warehouse/orders.html"></option><option value="Перемещение ТМЦ" data-href="../office/warehouse/movements.html"></option><option value="Списание ТМЦ" data-href="../office/warehouse/write-offs.html"></option><option value="Оприходование ТМЦ" data-href="../office/warehouse/postings.html"></option><option value="Прайс-листы" data-href="../office/warehouse/price-lists.html"></option><option value="Динамика реализации" data-href="../office/analytics.html"></option><option value="Отчёты" data-href="../office/reports.html"></option><option value="Копии ЛК" data-href="../pa/copies.html"></option><option value="Организации" data-href="../admin/organizations.html"></option><option value="Пользователи" data-href="../admin/users.html"></option><option value="Эмитенты" data-href="../admin/issuers.html"></option><option value="Внешние ТО" data-href="../admin/services.html"></option><option value="Лицензии" data-href="../admin/licenses.html"></option><option value="Справочник сервисов" data-href="../admin/catalogues.html"></option><option value="Выпуск обновления" data-href="../admin/version-release.html"></option><option value="Загрузка обновления" data-href="../admin/upload-release.html"></option><option value="Обновление приложения" data-href="../admin/app-update.html"></option><option value="Журнал изменений" data-href="../admin/change-log.html"></option><option value="Создание новости" data-href="../admin/create-news.html"></option><option value="Конфигурация" data-href="../admin/config.html"></option><option value="Сайты" data-href="../admin/sites.html"></option><option value="Главная" data-href="../dashboard.html"></option><option value="Профиль пользователя" data-href="../profile.html"></option><option value="Карточка организации" data-href="../admin/organization.html"></option><option value="Спецификация" data-href="../admin/specification.html"></option><option value="Сайт" data-href="../admin/site.html"></option><option value="Страница сайта" data-href="../admin/site-page.html"></option><option value="Привилегии пользователя" data-href="../admin/permissions.html"></option><option value="Документ" data-href="../office/warehouse/document.html"></option><option value="Страница не найдена" data-href="../404.html"></option></datalist>
+    <div style="position:relative">
+      <button class="icon-btn" type="button" data-pop="pop-notif" aria-expanded="false" aria-controls="pop-notif" aria-label="Уведомления, 3 новых"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg><span class="badge" aria-hidden="true">3</span></button>
+      <div class="pop pop--right notif" id="pop-notif">
+        <div class="notif__head"><b>Уведомления</b><span class="mono muted" style="font-size:12px">3 новых</span><button class="btn btn--ghost btn--xs" type="button" data-notif-read>Прочитать все</button></div>
+        <div class="notif__list"><a class="notif__item is-unread" href="../azs/information.html"><div><p>АЗС № 19 (ТО-0212): нестабильное подключение</p><time>Сегодня, 14:05</time></div></a><a class="notif__item is-unread" href="../azs/information.html"><div><p>АЗС № 20 (ТО-0219): нестабильное подключение</p><time>Сегодня, 13:04</time></div></a><a class="notif__item is-unread" href="../azs/information.html"><div><p>АЗС № 28 (ТО-0275): отсутствует лицензия</p><time>Сегодня, 12:03</time></div></a></div>
+      </div>
+    </div>
+    <div style="position:relative">
+      <button class="user-btn" type="button" data-pop="pop-user" aria-expanded="false" aria-controls="pop-user">
+        <span class="avatar" aria-hidden="true">ИП</span>
+        <span class="user-btn__name">И. Петров<small>ООО «Демо-Ойл»</small></span>
+      </button>
+      <div class="pop pop--right" id="pop-user" style="min-width:230px">
+        <div class="opts" role="menu" aria-label="Профиль">
+          <a class="opt" role="menuitem" href="../profile.html"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Профиль</a>
+          <a class="opt" role="menuitem" href="../ui-kit.html"><svg class="ico" aria-hidden="true"><use href="#i-help"/></svg>Инструкция пользователя</a>
+          <div class="opt-sep" role="separator"></div>
+          <a class="opt" role="menuitem" href="../index.html"><svg class="ico" aria-hidden="true"><use href="#i-logout"/></svg>Выйти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- @top:end -->
+    <main class="app-content" id="main">
+      <div class="phead">
+        <div>
+          <h1 class="phead__title"><span data-site-domain>Сайт</span> <a class="icon-btn" data-site-open href="#" target="_blank" rel="noopener noreferrer" data-tip="Открыть сайт в новом окне" aria-label="Открыть сайт в новом окне"><svg class="ico" aria-hidden="true"><use href="#i-external"/></svg></a></h1>
+          <p class="phead__sub"><span data-site-legal></span> · <span data-site-state></span></p>
+        </div>
+        <div class="tblock" aria-label="Паспорт сайта">
+          <div class="tblock__cell"><span class="tblock__k">Раздел</span><span class="tblock__v">АДМ-31.1</span></div>
+          <div class="tblock__cell"><span class="tblock__k">Страниц</span><span class="tblock__v" data-site-pages>—</span></div>
+          <div class="tblock__cell"><span class="tblock__k">Подписчиков</span><span class="tblock__v" data-site-subs>—</span></div>
+        </div>
+        <div class="phead__actions">
+          <label class="site-pick"><span class="sr-only">Сайт</span><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg><select class="in" data-site-pick aria-label="Выбрать сайт"></select></label>
+        </div>
+      </div>
+
+      <div class="panel site-status" data-bstat-host aria-live="polite"></div>
+
+      <div class="site-nav">
+        <div class="seg" role="group" aria-label="Раздел сайта" data-section-seg>
+          <button class="seg__btn" type="button" aria-pressed="true" data-section="content">Контент</button>
+          <button class="seg__btn" type="button" aria-pressed="false" data-section="settings">Настройки</button>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Контент сайта" data-tabs="content">
+          <button class="tab" role="tab" id="t-menu" aria-controls="p-menu" aria-selected="false" type="button">Меню</button>
+          <button class="tab" role="tab" id="t-pages" aria-controls="p-pages" aria-selected="true" type="button">Страницы <span class="tab__count" data-count="pages"></span></button>
+          <button class="tab" role="tab" id="t-news" aria-controls="p-news" aria-selected="false" type="button">Новости <span class="tab__count" data-count="news"></span></button>
+          <button class="tab" role="tab" id="t-catalog" aria-controls="p-catalog" aria-selected="false" type="button">Справочники</button>
+          <button class="tab" role="tab" id="t-redirects" aria-controls="p-redirects" aria-selected="false" type="button">Редиректы <span class="tab__count" data-count="redirects"></span></button>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Настройки сайта" data-tabs="settings" hidden>
+          <button class="tab" role="tab" id="t-general" aria-controls="p-general" aria-selected="true" type="button">Общее</button>
+          <button class="tab" role="tab" id="t-theme" aria-controls="p-theme" aria-selected="false" type="button">Тема</button>
+          <button class="tab" role="tab" id="t-contacts" aria-controls="p-contacts" aria-selected="false" type="button">Контакты</button>
+          <button class="tab" role="tab" id="t-seo" aria-controls="p-seo" aria-selected="false" type="button">Поиск и превью</button>
+          <button class="tab" role="tab" id="t-modules" aria-controls="p-modules" aria-selected="false" type="button">Модули</button>
+          <button class="tab" role="tab" id="t-footer" aria-controls="p-footer" aria-selected="false" type="button">Подвал</button>
+        </div>
+      </div>
+
+      <!-- Контент -->
+      <div class="tabpanel" role="tabpanel" id="p-menu" aria-labelledby="t-menu" hidden></div>
+      <div class="tabpanel" role="tabpanel" id="p-pages" aria-labelledby="t-pages"></div>
+      <div class="tabpanel" role="tabpanel" id="p-news" aria-labelledby="t-news" hidden></div>
+      <div class="tabpanel" role="tabpanel" id="p-catalog" aria-labelledby="t-catalog" hidden></div>
+      <div class="tabpanel" role="tabpanel" id="p-redirects" aria-labelledby="t-redirects" hidden></div>
+      <!-- Настройки: у каждой вкладки своё «Сохранить» -->
+      <div class="tabpanel" role="tabpanel" id="p-general" aria-labelledby="t-general" hidden></div>
+      <div class="tabpanel" role="tabpanel" id="p-theme" aria-labelledby="t-theme" hidden></div>
+      <div class="tabpanel" role="tabpanel" id="p-contacts" aria-labelledby="t-contacts" hidden></div>
+      <div class="tabpanel" role="tabpanel" id="p-seo" aria-labelledby="t-seo" hidden></div>
+      <div class="tabpanel" role="tabpanel" id="p-modules" aria-labelledby="t-modules" hidden></div>
+      <div class="tabpanel" role="tabpanel" id="p-footer" aria-labelledby="t-footer" hidden></div>
+    </main>
+  </div>
+</div>
+
+<!-- Универсальная форма записи: пункт меню, страница, новость, запись справочника, редирект -->
+<dialog class="dlg" id="dlg-edit" aria-labelledby="dlg-edit-t" data-static>
+  <form class="dlg__inner" method="dialog" novalidate id="form-edit">
+    <div class="dlg__head"><div><h2 class="dlg__title" id="dlg-edit-t"></h2><p class="dlg__sub" data-edit-sub></p></div>
+      <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="dlg__body"><div class="form-grid" data-edit-fields></div></div>
+    <div class="dlg__foot"><button class="btn btn--ghost btn--sm" type="button" data-close>Отмена</button><button class="btn btn--primary btn--sm" type="submit"><span data-edit-cta>Сохранить</span></button></div>
+  </form>
+</dialog>
+
+<dialog class="dlg" id="dlg-cats" aria-labelledby="dlg-cats-t">
+  <div class="dlg__inner">
+    <div class="dlg__head"><div><h2 class="dlg__title" id="dlg-cats-t">Темы новостей</h2><p class="dlg__sub">Вкладки ленты /news в этом порядке; у новости — одна тема или без темы. Тему, у которой есть новости, убрать нельзя.</p></div>
+      <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="dlg__body">
+      <ol class="olist" data-cats></ol>
+      <div class="olist-add"><label class="sr-only" for="cat-new">Новая тема</label><input class="in" id="cat-new" placeholder="Новая тема" autocomplete="off"><button class="btn btn--outline btn--sm" type="button" data-cat-add><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg><span>Добавить</span></button></div>
+    </div>
+    <div class="dlg__foot"><button class="btn btn--ghost btn--sm" type="button" data-close>Отмена</button><button class="btn btn--primary btn--sm" type="button" data-cats-save><span>Сохранить</span></button></div>
+  </div>
+</dialog>
+
+<dialog class="drawer drawer--wide" id="drawer-log" aria-labelledby="drw-log-t">
+  <div class="dlg__inner">
+    <div class="dlg__head"><div><h2 class="dlg__title" id="drw-log-t">Лог сборки</h2><p class="dlg__sub" data-log-sub></p></div>
+      <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="dlg__body"><pre class="buildlog" data-log></pre></div>
+    <div class="dlg__foot"><button class="btn btn--ghost btn--sm" type="button" data-close>Закрыть</button></div>
+  </div>
+</dialog>
+
+<script src="../data/demo.js"></script>
+<script src="../data/sites.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/site-kit.js"></script>
+<script src="../js/site.js"></script>
+</body>
+</html>

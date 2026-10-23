@@ -1037,7 +1037,7 @@ html:not(.js) .stepper { display: none; }
   .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .lightbox__btn--prev { left: 8px; } .lightbox__btn--next { right: 8px; }
   .docsec__groups { columns: 1; }
-  .docsec__groups.is-split { display: flex; flex-direction: column; }
+  .docsec__groups.is-split { display: flex; flex-direction: column; align-items: stretch; }
   .docsec__col { display: contents; }
   .toc { grid-column: 1 / -1; position: static; margin-bottom: 32px; }
   .policy { grid-column: 1 / -1; }

@@ -68,6 +68,14 @@
       ]
     },
     {
+      id: 'pa', code: 'ЛК', title: 'СНК-Личный кабинет', home: 'pa/copies.html',
+      groups: [
+        { title: 'Копии личного кабинета', items: [
+          { page: 'pa/copies.html', title: 'Копии ЛК', icon: 'i-copies', tpl: 'registry', code: 'ЛК-01' }
+        ] }
+      ]
+    },
+    {
       id: 'admin', code: 'АДМ', title: 'Администрирование', home: 'admin/organizations.html',
       groups: [
         { title: 'Клиенты', items: [
@@ -87,6 +95,9 @@
         { title: 'Сервис', items: [
           { page: 'admin/create-news.html', title: 'Создание новости', icon: 'i-edit', tpl: 'form', code: 'АДМ-21' },
           { page: 'admin/config.html', title: 'Конфигурация', icon: 'i-settings', tpl: 'form', code: 'АДМ-22' }
+        ] },
+        { title: 'Сайты', items: [
+          { page: 'admin/sites.html', title: 'Сайты', icon: 'i-globe', tpl: 'registry', code: 'АДМ-31' }
         ] }
       ]
     }
@@ -102,6 +113,8 @@
   const EXTRA = [
     { page: 'admin/organization.html', title: 'Карточка организации', parent: 'admin/organizations.html', tpl: 'card', code: 'АДМ-01.1' },
     { page: 'admin/specification.html', title: 'Спецификация', parent: 'admin/organizations.html', tpl: 'form', code: 'АДМ-01.2' },
+    { page: 'admin/site.html', title: 'Сайт', parent: 'admin/sites.html', tpl: 'card', code: 'АДМ-31.1' },
+    { page: 'admin/site-page.html', title: 'Страница сайта', parent: 'admin/sites.html', tpl: 'form', code: 'АДМ-31.2' },
     { page: 'admin/permissions.html', title: 'Привилегии пользователя', parent: 'admin/users.html', tpl: 'tree', code: 'АДМ-02.1' },
     { page: 'office/warehouse/document.html', title: 'Документ', parent: 'office/warehouse/orders.html', tpl: 'document', code: 'ОФ-3x.1' },
     { page: '404.html', title: 'Страница не найдена', parent: null, tpl: 'form', code: '404' }

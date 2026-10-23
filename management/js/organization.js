@@ -2,14 +2,15 @@
    СНК · Управление продуктами — карточка организации (Администрирование).
    ?org=<id>. Вкладки: сведения, договоры со спецификациями, лицензии,
    Hasp-ключи (активация мастером из трёх шагов), пользователи, точки,
-   перекодировка топлива, сервисы партнёра. TODO: API.
+   перекодировка топлива, сервисы партнёра, управление обновлениями,
+   офисное ПО и внешние ТО. TODO: API.
    ========================================================= */
 (() => {
   'use strict';
 
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-  const D = window.SNC_DEMO, SNC = window.SNC;
+  const D = window.SNC_DEMO, S = window.SNC_SITES, SNC = window.SNC;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const nf = new Intl.NumberFormat('ru-RU');
 
@@ -23,7 +24,7 @@
      клиент: всё, кроме квот; партнёр: информация, договоры, пользователи, квоты по клиентам;
      сервис: карточки нет — управление в «Справочнике сервисов». */
   const hideTab = id => { const t = $(`#t-${id}`); if (t) { t.hidden = true; $(`#p-${id}`).hidden = true; } };
-  if (!isClient) { ['lic', 'hasp', 'azs', 'fuel', 'svc'].forEach(hideTab); $('[data-dialog="dlg-activate"]').hidden = true; }
+  if (!isClient) { ['upd', 'lic', 'hasp', 'azs', 'soft', 'ext', 'fuel', 'svc'].forEach(hideTab); $('[data-dialog="dlg-activate"]').hidden = true; }
   if (isPartner) $('#t-quota').hidden = false;
   if (isService) {
     ['info', 'contracts', 'users', 'quota'].forEach(hideTab);
@@ -157,6 +158,98 @@
   $('#svc').innerHTML = `<div class="dt__scroll"><table class="table"><caption class="sr-only">Сервисы партнёра</caption><thead><tr><th scope="col">Сервис</th><th scope="col">Тип</th><th scope="col">Приём заявок</th></tr></thead>
     <tbody>${D.services.map((s, i) => `<tr><td class="cell-main">${esc(s.name)}</td><td>${s.kind}</td><td><label class="sw"><input type="checkbox" data-svc="${esc(s.name)}"${(i + idx) % 4 !== 3 ? ' checked' : ''}><span class="sw__track"></span><span class="sr-only">Приём заявок от ${esc(s.name)}</span></label></td></tr>`).join('')}</tbody></table></div>`;
   $('#svc').addEventListener('change', e => { const c = e.target.closest('[data-svc]'); if (c) SNC.toast({ type: 'ok', title: c.checked ? `${c.dataset.svc}: заявки принимаются` : `${c.dataset.svc}: приём заявок остановлен` }); });
+
+  /* ---------- Управление обновлениями ----------
+     Версии, доступные организации: «для всех рабочих мест» и индивидуальные обновления ТО.
+     Разрешение и отмена — с подтверждением; история операций — в drawer. */
+  const ico = id => `<svg class="ico" aria-hidden="true"><use href="#${id}"/></svg>`;
+  const updates = S.orgUpdates.map(u => ({ ...u }));
+  const updRow = u => `<tr data-upd="${u.id}"><td class="cell-main">${esc(u.feature)}${u.place ? `<span class="cell-sub">${esc(u.place)}</span>` : ''}</td><td class="mono">${esc(u.version)}</td><td>${esc(u.name)}</td><td class="mono">${u.number}</td><td class="mono">${u.date}</td>
+    <td><span class="st st--${u.confirmed ? 'ok' : 'warn'}">${u.confirmed ? 'Подтверждено' : 'Не подтверждено'}</span></td>
+    <td class="col-actions"><button class="icon-btn icon-btn--sm" type="button" data-upd-cancel data-tip="Отменить обновление" aria-label="Отменить обновление ${esc(u.feature)} ${esc(u.version)}">${ico('i-x')}</button></td></tr>`;
+  const updGroup = (key, title, text, actions) => {
+    const list = updates.filter(u => u.group === key);
+    return `<section class="panel upd-group" aria-labelledby="upd-${key}"><div class="panel__head"><div><h2 class="panel__title" id="upd-${key}">${title}</h2><p class="muted dt__note">${text}</p></div><div class="panel__tools">${actions}</div></div>
+      ${list.length ? `<div class="dt__scroll"><table class="table"><caption class="sr-only">${title}</caption><thead><tr><th scope="col">Лицензия</th><th scope="col">Версия</th><th scope="col">Наименование</th><th scope="col">Номер</th><th scope="col">Доступно до</th><th scope="col">Статус</th><th class="col-actions" scope="col"><span class="sr-only">Действия</span></th></tr></thead>
+      <tbody>${list.map(updRow).join('')}</tbody></table></div>` : '<div class="empty"><div class="empty__title">Обновлений нет</div><p class="empty__text">Здесь появятся версии, которые СНК выпустит для этой организации.</p></div>'}</section>`;
+  };
+  const renderUpd = () => {
+    count('upd', updates.filter(u => !u.confirmed).length || '');
+    $('#upd').innerHTML = `<div class="dt__bar upd-bar"><p class="muted dt__note">Доступные версии программных продуктов и распределение их по рабочим местам. Точки установят разрешённую версию после закрытия смены.</p>
+        <button class="btn btn--outline btn--xs" type="button" data-dialog="drawer-upd-ops">${ico('i-history')}<span>История операций</span></button></div>
+      ${updGroup('all', 'Версии доступны для всех рабочих мест', 'Разрешённая версия ставится на все рабочие места, у которых известна установленная версия.', `<button class="btn btn--primary btn--xs" type="button" data-upd-all>${ico('i-update')}<span>Установить для всех мест</span></button>`)}
+      ${updGroup('one', 'Индивидуальные обновления ТО', 'Версия только для отдельных точек — например, чтобы проверить бета-версию.', `<button class="btn btn--outline btn--xs" type="button" data-upd-one>${ico('i-plus')}<span>Индивидуальное обновление</span></button><button class="btn btn--ghost btn--xs" type="button" data-upd-cancel-all><span>Отменить все</span></button>`)}`;
+  };
+  renderUpd();
+  const restore = list => { updates.push(...list); updates.sort((a, b) => a.id - b.id); renderUpd(); };
+  $('#upd').addEventListener('click', async e => {
+    const tr = e.target.closest('tr[data-upd]'), u = tr && updates.find(x => x.id === Number(tr.dataset.upd));
+    if (e.target.closest('[data-upd-cancel]') && u) {
+      if (!await SNC.confirm({ title: 'Отменить обновление?', sub: `${u.feature} ${u.version}${u.place ? ` · ${u.place}` : ''}`, icon: 'i-update', cta: 'Отменить обновление', items: ['Рабочие места не получат эту версию', 'Уже установленная версия на точках останется', 'Операция попадёт в историю'] })) return;
+      updates.splice(updates.indexOf(u), 1); renderUpd();
+      SNC.toast({ type: 'ok', title: 'Обновление отменено', text: `${u.feature} ${u.version}`, action: { label: 'Вернуть', onClick: () => restore([u]) } });
+    }
+    if (e.target.closest('[data-upd-all]')) {
+      const pending = updates.filter(x => x.group === 'all' && !x.confirmed);
+      if (!pending.length) { SNC.toast({ type: 'info', title: 'Все версии уже разрешены' }); return; }
+      if (!await SNC.confirm({ title: 'Разрешить обновление?', sub: org.name, icon: 'i-update', cta: 'Разрешить', items: [`${pending.map(x => `${x.feature} ${x.version}`).join(', ')} — установится на все рабочие места, у которых известна установленная версия`, 'Точки обновятся после закрытия смены', 'Отменить разрешение можно до начала установки'] })) return;
+      pending.forEach(x => { x.confirmed = true; }); renderUpd();
+      SNC.toast({ type: 'ok', title: 'Обновление распределено', text: org.name });
+    }
+    if (e.target.closest('[data-upd-one]')) SNC.toast({ type: 'info', title: 'Индивидуальное обновление', text: 'В боевом — модалка: поиск точки и выбор версии из доступных.' });
+    if (e.target.closest('[data-upd-cancel-all]')) {
+      const one = updates.filter(x => x.group === 'one');
+      if (!one.length || !await SNC.confirm({ title: 'Отменить обновления?', sub: `Индивидуальных обновлений: ${one.length}`, icon: 'i-update', cta: 'Отменить все', items: ['Точки не получат индивидуальные версии', 'Версии «для всех рабочих мест» не изменятся'] })) return;
+      one.forEach(x => updates.splice(updates.indexOf(x), 1)); renderUpd();
+      SNC.toast({ type: 'ok', title: 'Индивидуальные обновления отменены', action: { label: 'Вернуть', onClick: () => restore(one) } });
+    }
+  });
+  $('#upd-ops').innerHTML = `<div class="dt__scroll"><table class="table"><caption class="sr-only">История операций с обновлениями</caption><thead><tr><th scope="col">Дата</th><th scope="col">Операция</th><th scope="col">Обновление</th><th scope="col">Область</th><th scope="col">Пользователь</th><th scope="col">Обоснование</th></tr></thead>
+    <tbody>${S.updateOps.map(r => `<tr>${r.map((v, i) => `<td${i === 0 || i === 2 ? ' class="mono"' : ''}>${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+
+  /* ---------- Офисное ПО ----------
+     Основные рабочие места (СНК-Офис, СНК-ЛК-Офис, СНК-ПЦ, СНК-АСН, СНК-Личный кабинет) и дополнительные под ними.
+     Действия: дополнительное место, конфигурационный файл, подключение копии ЛК к management. */
+  const soft = S.officeSoft.map(x => ({ ...x, children: x.children.map(c => ({ ...c })) }));
+  const cidCell = v => v ? `<span class="mono" data-tip="${esc(v)}">${esc(v.slice(0, 9))}…</span>` : '<span class="muted">не привязан</span>';
+  const softRow = (x, child) => `<tr data-soft="${x.id}"${child ? ' class="tree-child"' : ''}>
+    <td class="cell-main">${esc(S.SOFT_TYPES[x.type])}${child ? '<span class="cell-sub">дополнительное место</span>' : ''}</td>
+    <td>${cidCell(x.computerId)}</td><td class="mono">${esc(x.hasp)}</td><td>${esc(x.comment)}</td>
+    <td class="col-actions2"><span class="row-acts">
+      ${!child && x.type === 200 ? `<button class="icon-btn icon-btn--sm" type="button" data-soft-add data-tip="Добавить дополнительное рабочее место" aria-label="Добавить дополнительное рабочее место">${ico('i-plus')}</button>` : ''}
+      ${x.type === 9905 ? `<button class="icon-btn icon-btn--sm" type="button" data-soft-pa data-tip="Подключение к management" aria-label="Подключение копии ЛК к management">${ico('i-external')}</button>` : ''}
+      <button class="icon-btn icon-btn--sm" type="button" data-soft-cfg data-tip="Получить конфигурационный файл" aria-label="Получить конфигурационный файл: ${esc(x.comment)}">${ico('i-download')}</button>
+    </span></td></tr>`;
+  const renderSoft = () => {
+    count('soft', soft.reduce((a, x) => a + 1 + x.children.length, 0));
+    $('#soft').innerHTML = `<div class="dt__bar"><p class="muted dt__note">Рабочие места офисных программ организации. Конфигурационный файл привязывает программу к организации и Hasp-ключу.</p>
+        <button class="btn btn--outline btn--xs" type="button" data-soft-new>${ico('i-plus')}<span>Добавить рабочее место</span></button></div>
+      <div class="dt__scroll"><table class="table"><caption class="sr-only">Офисное ПО</caption><thead><tr><th scope="col">Тип</th><th scope="col">Идентификатор ПК</th><th scope="col">Hasp-ключи</th><th scope="col">Комментарий</th><th class="col-actions2" scope="col"><span class="sr-only">Действия</span></th></tr></thead>
+      <tbody>${soft.map(x => softRow(x) + x.children.map(c => softRow(c, true)).join('')).join('')}</tbody></table></div>`;
+  };
+  renderSoft();
+  $('#soft').addEventListener('click', e => {
+    const tr = e.target.closest('tr[data-soft]');
+    if (e.target.closest('[data-soft-cfg]')) SNC.toast({ type: 'ok', title: 'Конфигурационный файл скачан', text: 'Положите его в папку программы и перезапустите её.' });
+    if (e.target.closest('[data-soft-pa]')) location.href = '../pa/copies.html';
+    if (e.target.closest('[data-soft-new]')) SNC.toast({ type: 'info', title: 'Новое рабочее место', text: 'В боевом — модалка: тип программы, Hasp-ключ и комментарий.' });
+    if (e.target.closest('[data-soft-add]') && tr) {
+      const p = soft.find(x => x.id === Number(tr.dataset.soft));
+      p.children.push({ id: Date.now(), type: p.type, computerId: null, hasp: '—', comment: 'Новое рабочее место' });
+      renderSoft();
+      $(`tr[data-soft="${p.children.at(-1).id}"]`).classList.add('is-changed');
+      SNC.toast({ type: 'ok', title: 'Рабочее место добавлено', text: 'Идентификатор ПК привяжется при первом запуске программы.' });
+    }
+  });
+
+  /* ---------- Внешние ТО: рабочие места СНК-ВС ПЦ и СНК-ВС ЕБС ---------- */
+  count('ext', S.externalServices.length);
+  $('#ext').innerHTML = `<div class="dt__bar"><p class="muted dt__note">Шлюзы процессинга и бонусных систем, которые работают от имени организации.</p>
+      <button class="btn btn--outline btn--xs" type="button" data-demo-toast="info|Новый внешний ТО|В боевом — модалка: тип, наименование, Hasp-ключ и код у эмитента.">${ico('i-plus')}<span>Добавить</span></button></div>
+    <div class="dt__scroll"><table class="table"><caption class="sr-only">Внешние ТО</caption><thead><tr><th scope="col">Тип</th><th scope="col">Наименование</th><th scope="col">Hasp-ключи</th><th scope="col">Код у эмитента</th><th class="col-actions2" scope="col"><span class="sr-only">Действия</span></th></tr></thead>
+    <tbody>${S.externalServices.map(x => `<tr><td>${esc(x.type)}</td><td class="cell-main">${esc(x.name)}</td><td class="mono">${esc(x.hasp)}</td><td class="mono">${esc(x.shopKey)}</td>
+      <td class="col-actions2"><span class="row-acts"><button class="icon-btn icon-btn--sm" type="button" data-demo-toast="info|Редактирование внешнего ТО|${esc(x.name)}" data-tip="Редактировать" aria-label="Редактировать ${esc(x.name)}">${ico('i-edit')}</button>
+      <button class="icon-btn icon-btn--sm" type="button" data-demo-toast="ok|Конфигурационный файл скачан|${esc(x.name)}" data-tip="Получить конфигурационный файл" aria-label="Получить конфигурационный файл: ${esc(x.name)}">${ico('i-download')}</button></span></td></tr>`).join('')}</tbody></table></div>`;
 
   /* ---------- Пустые разделы (у партнёров и новых организаций) ---------- */
   const empty = (sel, title, text) => { $(sel).innerHTML = `<div class="empty"><div class="empty__title">${title}</div><p class="empty__text">${text}</p></div>`; };
