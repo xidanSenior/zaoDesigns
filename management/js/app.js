@@ -326,19 +326,19 @@
   if (SNC.org.id) document.querySelectorAll('[data-filter="orgName"], #f-org').forEach(el => { el.hidden = true; });
 
   /* ---------- Доступ к разделам по типу организации ----------
-     Партнёру и сервису недоступны СНК-АЗС и СНК-Офис (в боевом приложении — правило clientOnly
+     Партнёру и сервису недоступны СНК-АЗС, СНК-Офис и СНК-Личный кабинет (в боевом приложении — правило clientOnly
      с переходом на главную). В прототипе вместо молчаливого перехода объясняем, что делать. */
   (() => {
     if (SNC.org.isClient) return;
     const typeName = { 3: 'сервис', 4: 'партнёр' }[SNC.org.type] || 'не клиент';
-    const why = `${SNC.org.name} — ${typeName}. Точки обслуживания и офисные данные есть только у клиентских организаций.`;
+    const why = `${SNC.org.name} — ${typeName}. Точки обслуживания, офисные данные и копии ЛК есть только у клиентских организаций.`;
     $$('.sb__product').forEach(a => {
-      if (!/(^|\/)(azs|office)\//.test(a.getAttribute('href'))) return;
+      if (!/(^|\/)(azs|office|pa)\//.test(a.getAttribute('href'))) return;
       a.setAttribute('aria-disabled', 'true');
       a.dataset.tip = 'Доступно, когда выбрана клиентская организация';
       a.addEventListener('click', e => { e.preventDefault(); SNC.toast({ type: 'info', title: 'Раздел только для клиентов', text: why }); });
     });
-    if (!/\/(azs|office)\//.test(location.pathname)) return;
+    if (!/\/(azs|office|pa)\//.test(location.pathname)) return;
     const main = $('#main');
     if (!main) return;
     // содержимое прячем, а не удаляем: скрипты страницы продолжают работать без ошибок
@@ -453,7 +453,9 @@
     if (!ink) { ink = document.createElement('span'); ink.className = 'tabs__ink'; ink.setAttribute('aria-hidden', 'true'); list.append(ink); }
     const place = (t, instant) => {
       if (instant) ink.style.transition = 'none';
-      ink.style.transform = `translateX(${t.offsetLeft}px) scaleX(${t.offsetWidth})`;
+      // вкладки в две строки (.tabs--wrap): индикатор опускается под строку выбранной вкладки
+      const dy = t.offsetTop + t.offsetHeight - list.clientHeight;
+      ink.style.transform = `translate(${t.offsetLeft}px, ${dy}px) scaleX(${t.offsetWidth})`;
       if (instant) { ink.getBoundingClientRect(); ink.style.transition = ''; }
     };
     const select = (t, focus) => {
@@ -786,6 +788,40 @@
   });
   SNC.dialog = { open: openDialog, close: id => closeDialog(document.getElementById(id)) };
 
+  /* ---------- Подтверждение с последствиями ----------
+     SNC.confirm({ title, sub, items: ['что произойдёт', …], cta, icon }) → Promise<boolean>.
+     Один <dialog> на страницу, собирается при первом вызове. В боевом — ConfirmDialog со слотом message. */
+  SNC.confirm = ({ title, sub = '', items = [], cta = 'Подтвердить', icon = 'i-warn' } = {}) => new Promise(resolve => {
+    let d = document.getElementById('dlg-ask');
+    if (!d) {
+      document.body.insertAdjacentHTML('beforeend', `<dialog class="dlg dlg--sm" id="dlg-ask" role="alertdialog" aria-labelledby="dlg-ask-t" aria-describedby="dlg-ask-d">
+  <form class="dlg__inner" method="dialog" novalidate>
+    <div class="dlg__head" style="border-bottom:0;padding-bottom:0"><span class="confirm__ico" data-ask-ico></span>
+      <div><h2 class="dlg__title" id="dlg-ask-t"></h2><p class="dlg__sub" id="dlg-ask-d"></p></div>
+      <button class="icon-btn" type="button" data-close aria-label="Закрыть">${ico('i-x')}</button></div>
+    <div class="dlg__body"><div class="consequences"><span class="consequences__title">Что произойдёт</span><ul></ul></div></div>
+    <div class="dlg__foot"><button class="btn btn--ghost btn--sm" type="button" data-close data-autofocus>Отмена</button><button class="btn btn--primary btn--sm" type="submit" value="ok"><span></span></button></div>
+  </form>
+</dialog>`);
+      d = document.getElementById('dlg-ask');
+      d.addEventListener('click', e => { if (e.target === d) closeDialog(d); });
+      d.addEventListener('close', () => {
+        if (!$$('dialog[open]').length) document.documentElement.style.overflow = '';
+        d._opener?.focus?.({ preventScroll: true });
+        d._resolve?.(d.returnValue === 'ok'); d._resolve = null;
+      });
+    }
+    $('[data-ask-ico]', d).innerHTML = ico(icon);
+    $('#dlg-ask-t', d).textContent = title;
+    $('#dlg-ask-d', d).textContent = sub; $('#dlg-ask-d', d).hidden = !sub;
+    $('.consequences', d).hidden = !items.length;
+    $('.consequences ul', d).innerHTML = items.map(t => `<li>${String(t).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))}</li>`).join('');
+    $('[type="submit"] span', d).textContent = cta;
+    d.returnValue = '';
+    d._resolve = resolve;
+    openDialog('dlg-ask');
+  });
+
   /* ---------- Тосты ----------
      SNC.toast({ type: 'ok'|'err'|'warn'|'info', title, text, action: { label, onClick }, duration })
      Таймер на паузе при наведении и в скрытой вкладке. Не больше трёх одновременно. */
@@ -859,7 +895,9 @@
     tip.className = 'tip'; tip.id = 'snc-tip'; tip.setAttribute('aria-hidden', 'true'); // роль tooltip — только пока подсказка видна
     document.body.append(tip);
     let timer = null, warmUntil = 0, owner = null;
-    const text = el => el.dataset.tip || (el.dataset.tipCollapsed && el.closest('.app-shell.is-collapsed') && window.innerWidth > 1023 ? el.dataset.tipCollapsed : '');
+    // подпись пункта меню, обрезанная многоточием, тоже показывается целиком
+    const clipped = el => { const l = el.querySelector('.sb__label'); return !!l && l.scrollWidth > l.clientWidth; };
+    const text = el => el.dataset.tip || (el.dataset.tipCollapsed && ((el.closest('.app-shell.is-collapsed') && window.innerWidth > 1023) || clipped(el)) ? el.dataset.tipCollapsed : '');
     const show = el => {
       const t = text(el); if (!t) return;
       owner = el;

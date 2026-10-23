@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Реестр карт · Личный кабинет СНК</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../../sncard/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../designs/styles.css">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="app" data-product="purchaser">
+<!-- @sprite:start -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 16 16"><path d="M10 4L6 8l4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 16 16"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 16 16"><path d="M3 8h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 2h-14zM10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-sidebar" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 4.5v15M15.5 10l-2 2 2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5M6 9.5V19h4.5v-5h3v5H18V9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><path d="M3.5 12h4l2-5 4 10 2-5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-station" viewBox="0 0 24 24"><path d="M5 20V5.5A1.5 1.5 0 0 1 6.5 4h6A1.5 1.5 0 0 1 14 5.5V20M3.5 20h12M7.5 7.5h4v3.5h-4zM14 9h2.5a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 0 3 0V8l-2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-requests" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 3v2.5h6V3M8.5 11h7M8.5 14.5h7M8.5 18h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16.5V11M11.5 16.5V6.5M16 16.5v-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-shift" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 9.5h16M8.5 3v4M15.5 3v4M8 13.5h3M8 16.5h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 5.5A1.5 1.5 0 0 1 6.5 4H19v14H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 8h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8.5l-8 4-8-4zM4 8l8 4 8-4M12 12v8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-report" viewBox="0 0 24 24"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5M10 13h5M10 16.5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-org" viewBox="0 0 24 24"><path d="M4 20.5h16M6 20.5V6.5L12 3.5l6 3v14M9.5 9h1M13.5 9h1M9.5 12.5h1M13.5 12.5h1M10.5 20.5v-4h3v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9.5" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 19.5a6 6 0 0 1 12 0M16 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.2a6 6 0 0 1 3 5.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 12l8-8M16 7l2.5 2.5M14 9l2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-update" viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5v4h-4M12 8.5V12l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-log" viewBox="0 0 24 24"><path d="M8 6h11M8 12h11M8 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5v2.2M12 18.3v2.2M20.5 12h-2.2M5.7 12H3.5M18 6l-1.6 1.6M7.6 16.4 6 18M18 18l-1.6-1.6M7.6 7.6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9.8 9.5a2.3 2.3 0 1 1 3.3 2.1c-.7.4-1.1.9-1.1 1.7v.4M12 16.8h.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M14 4.5H6.5A1.5 1.5 0 0 0 5 6v12a1.5 1.5 0 0 0 1.5 1.5H14M10 12h10M16.5 8.5 20 12l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 16 16"><path d="M2.5 3.5h11L9.5 8.5v4l-3 1.5V8.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-columns" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 4.5v15M14.5 4.5v15" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18" cy="12" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M5 19l1-4 10-10 3 3-10 10zM14 7l3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 7V4.5h4V7M7 7l1 13h8l1-13M10.5 11v5M13.5 11v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 8.5V6a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 15.5h2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 0 1-12.2 4.7M5 12a7 7 0 0 1 12.2-4.7M17.5 3.5v4h-4M6.5 20.5v-4h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M3.5 6.5 9 4.5l6 2 5.5-2v13l-5.5 2-6-2-5.5 2zM9 4.5v13M15 6.5v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 10h16M4 14.5h16M10 10v9" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.3l2.7 2.7L16 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5.5M12 16.3h.01" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4 21 19.5H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4.5M12 17h.01" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v5.5M12 7.7h.01" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M4 4l16 16M8.5 13.5a5 5 0 0 1 5.5-1M5 10.3a9.5 9.5 0 0 1 4-2M12.5 7.6a9.5 9.5 0 0 1 6.5 2.7M12 17.5h.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-file" viewBox="0 0 48 48"><path d="M13 5h15l9 9v29H13zM28 5v9h9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M24 36V22M18.5 27.5 24 22l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-fuel" viewBox="0 0 24 24"><path d="M12 3.5s-5.5 6-5.5 10a5.5 5.5 0 0 0 11 0c0-4-5.5-10-5.5-10z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M4 4l16 16M9.9 5.8A9.7 9.7 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.7M6.3 7.5A16 16 0 0 0 2.5 12S6 18.5 12 18.5a9.3 9.3 0 0 0 4.3-1M9.9 9.9a3 3 0 0 0 4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M13.5 4.5h6v6M19.5 4.5l-8 8M17.5 13.5v5a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 18.5v-10A1.5 1.5 0 0 1 6 7h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 12h16M12 4c2.2 2.3 3.2 5 3.2 8s-1 5.7-3.2 8c-2.2-2.3-3.2-5-3.2-8s1-5.7 3.2-8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-copies" viewBox="0 0 24 24"><rect x="4" y="8" width="11" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V5.5A1.5 1.5 0 0 1 9.5 4h9A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H15M7 12h5M7 15.5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v3.2h3.2M12 8v4.2l2.8 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6.5 13.5 12 19l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-grip" viewBox="0 0 24 24"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 10h18M6.5 15h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-transfer" viewBox="0 0 24 24"><rect x="2.5" y="8" width="11" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 9h5.5M19 6.5 21.5 9 19 11.5M16 15h5.5M19 12.5l2.5 2.5-2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8.5h14M14.5 5 18 8.5 14.5 12M20 15.5H6M9.5 12 6 15.5 9.5 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-coupon" viewBox="0 0 24 24"><path d="M3.5 7A1.5 1.5 0 0 1 5 5.5h14A1.5 1.5 0 0 1 20.5 7v2.5a2.5 2.5 0 0 0 0 5V17a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 17v-2.5a2.5 2.5 0 0 0 0-5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 8v1.5M14.5 11.25v1.5M14.5 14.5V16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-payment" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8.5v7M14.2 10a2.2 1.6 0 0 0-2.2-1.2c-1.2 0-2.2.6-2.2 1.5 0 2 4.4 1 4.4 3 0 .9-1 1.6-2.2 1.6a2.4 1.8 0 0 1-2.4-1.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-invoice" viewBox="0 0 24 24"><path d="M6 3.5h12v17l-2.2-1.5-1.9 1.5-1.9-1.5-1.9 1.5-1.9-1.5L6 20.5zM9 8h6M9 11.5h6M9 15h3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7.5A2 2 0 0 1 6 5.5h11v3M4 7.5v10a2 2 0 0 0 2 2h13.5v-11H6a2 2 0 0 1-2-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14h.01" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4.5h2.5l2 10.5h10l2-7.5H7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="19" r="1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9h18M12 9v11M12 9S10.5 4.5 8 4.5a2 2 0 0 0 0 4.5M12 9s1.5-4.5 4-4.5a2 2 0 0 1 0 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.4.7-4 3.7 1 5.4L12 16.2 7.2 18.8l1-5.4-4-3.7 5.4-.7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-percent" viewBox="0 0 24 24"><path d="M6 18 18 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16.5" cy="16.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="14" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="14" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 14h2.5v2.5H14zM18.5 14H20M14 19.5h2.5M18.5 17v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 17.5h2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-block" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 17.5l11-11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-limit" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 18l4-5.5M8 18h.01M16 18h.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+<!-- @sprite:end -->
+<a class="skip-link" href="#main">К содержимому</a>
+<div class="app-shell">
+<!-- @sidebar:start -->
+<aside class="sb" id="sidebar" aria-label="Разделы">
+  <a class="sb__brand" href="../purchaser/statistic.html" aria-label="Личный кабинет СНК — главная">
+    <svg viewBox="0 0 120 48" aria-hidden="true"><path d="M38 11H22.5A12.5 12.5 0 0 0 10 23.5v1A12.5 12.5 0 0 0 22.5 37H38 M48 11v26 M72 11v26 M48 24h24 M84 11v26 M106 11L86.5 24 106 37" fill="none" stroke="#D32F2F" stroke-width="6" stroke-linecap="square"/></svg>
+    <b class="sb__label">Личный<br>кабинет</b>
+  </a>
+  <nav class="sb__products" aria-label="Роль (переключатель только в прототипе)">
+    <a class="sb__product" href="../purchaser/statistic.html" aria-current="true" data-role="purchaser"><span class="sb__code" aria-hidden="true">ЮЛ</span><span class="sb__label">Покупатель</span></a>
+    <a class="sb__product" href="../owner/card.html" data-role="owner"><span class="sb__code" aria-hidden="true">ДК</span><span class="sb__label">Держатель карты</span></a>
+    <a class="sb__product" href="../seller/dashboard.html" data-role="seller"><span class="sb__code" aria-hidden="true">ПР</span><span class="sb__label">Продавец</span></a>
+    <a class="sb__product" href="../station/shifts.html" data-role="station"><span class="sb__code" aria-hidden="true">ТО</span><span class="sb__label">Точка обслуживания</span></a>
+  </nav>
+  <nav class="sb__nav" aria-label="Разделы: покупатель">
+    <div class="sb__group">
+      <span class="sb__title">Карты</span>
+      <a class="sb__link" href="../purchaser/statistic.html"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg><span class="sb__label">Статистика</span></a>
+      <a class="sb__link" href="../purchaser/cards.html" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg><span class="sb__label">Реестр карт</span><span class="sb__count" title="Карты, которым нужно внимание">9</span></a>
+      <a class="sb__link" href="../purchaser/transfer-cards.html"><svg class="ico" aria-hidden="true"><use href="#i-transfer"/></svg><span class="sb__label">Перемещение карт</span></a>
+      <a class="sb__link" href="../purchaser/transfer-balances.html"><svg class="ico" aria-hidden="true"><use href="#i-swap"/></svg><span class="sb__label">Перенос остатков</span></a>
+      <a class="sb__link" href="../purchaser/transfer-coupons.html"><svg class="ico" aria-hidden="true"><use href="#i-coupon"/></svg><span class="sb__label">Перемещение талонов</span></a>
+    </div>
+    <div class="sb__group">
+      <span class="sb__title">Финансы</span>
+      <a class="sb__link" href="../purchaser/contracts.html"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg><span class="sb__label">Договоры</span></a>
+      <a class="sb__link" href="../purchaser/payments.html"><svg class="ico" aria-hidden="true"><use href="#i-payment"/></svg><span class="sb__label">Платежи</span></a>
+      <a class="sb__link" href="../purchaser/invoices.html"><svg class="ico" aria-hidden="true"><use href="#i-invoice"/></svg><span class="sb__label">Выписка счёта</span></a>
+      <a class="sb__link" href="../purchaser/documents.html"><svg class="ico" aria-hidden="true"><use href="#i-report"/></svg><span class="sb__label">Документы</span></a>
+    </div>
+    <div class="sb__group">
+      <span class="sb__title">Отчётность</span>
+      <a class="sb__link" href="../purchaser/reports/fuel.html"><svg class="ico" aria-hidden="true"><use href="#i-fuel"/></svg><span class="sb__label">По типам топлива</span></a>
+      <a class="sb__link" href="../purchaser/reports/transactions.html"><svg class="ico" aria-hidden="true"><use href="#i-log"/></svg><span class="sb__label">Протокол транзакций</span></a>
+      <a class="sb__link" href="../purchaser/reports/balances.html"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg><span class="sb__label">Остатки по картам</span></a>
+    </div>
+    <div class="sb__group">
+      <span class="sb__title">Организация</span>
+      <a class="sb__link" href="../stations.html"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg><span class="sb__label">Точки обслуживания</span></a>
+      <a class="sb__link" href="../purchaser/users.html"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><span class="sb__label">Пользователи</span></a>
+      <a class="sb__link" href="../purchaser/requisites.html"><svg class="ico" aria-hidden="true"><use href="#i-org"/></svg><span class="sb__label">Реквизиты</span></a>
+    </div>
+  </nav>
+  <div class="sb__foot">
+    <a class="sb__link" href="../profile.html"><svg class="ico" aria-hidden="true"><use href="#i-settings"/></svg><span class="sb__label">Профиль и настройки</span></a>
+    <button class="sb__link sb__collapse" type="button" data-sb-collapse aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-sidebar"/></svg><span class="sb__label">Свернуть меню</span></button>
+  </div>
+</aside>
+<!-- @sidebar:end -->
+  <div class="app-main">
+<!-- @top:start -->
+<header class="top">
+  <button class="icon-btn top__burger" type="button" data-sb-open aria-controls="sidebar" aria-expanded="false" aria-label="Открыть меню"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  <nav class="crumbs" aria-label="Вы здесь"><a href="../purchaser/statistic.html">Покупатель</a><span class="crumbs__sep" aria-hidden="true">/</span><span class="crumbs__group">Карты</span><span class="crumbs__sep" aria-hidden="true">/</span><span aria-current="page">Реестр карт</span></nav>
+  <span class="ctx" title="ООО «Демо-Логистик»"><svg class="ico" aria-hidden="true"><use href="#i-org"/></svg><span>ООО «Демо-Логистик»</span></span>
+  <div class="top__right">
+    <label class="gsearch"><span class="sr-only">Поиск по разделам</span><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><input class="gsearch__input" type="search" placeholder="Поиск по разделам" data-gsearch list="gsearch-list" autocomplete="off"><span class="kbd" aria-hidden="true">/</span></label>
+    <datalist id="gsearch-list"><option value="Статистика" data-href="../purchaser/statistic.html"></option><option value="Реестр карт" data-href="../purchaser/cards.html"></option><option value="Перемещение карт" data-href="../purchaser/transfer-cards.html"></option><option value="Перенос остатков" data-href="../purchaser/transfer-balances.html"></option><option value="Перемещение талонов" data-href="../purchaser/transfer-coupons.html"></option><option value="Договоры" data-href="../purchaser/contracts.html"></option><option value="Платежи" data-href="../purchaser/payments.html"></option><option value="Выписка счёта" data-href="../purchaser/invoices.html"></option><option value="Документы" data-href="../purchaser/documents.html"></option><option value="По типам топлива" data-href="../purchaser/reports/fuel.html"></option><option value="Протокол транзакций" data-href="../purchaser/reports/transactions.html"></option><option value="Остатки по картам" data-href="../purchaser/reports/balances.html"></option><option value="Точки обслуживания" data-href="../stations.html"></option><option value="Пользователи" data-href="../purchaser/users.html"></option><option value="Реквизиты" data-href="../purchaser/requisites.html"></option><option value="Профиль пользователя" data-href="../profile.html"></option><option value="Держатель карты — кабинет" data-href="../owner/card.html"></option><option value="Продавец — кабинет" data-href="../seller/dashboard.html"></option><option value="Точка обслуживания — кабинет" data-href="../station/shifts.html"></option></datalist>
+    <div style="position:relative">
+      <button class="icon-btn" type="button" data-pop="pop-notif" aria-expanded="false" aria-controls="pop-notif" aria-label="Уведомления, 3 новых"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg><span class="badge" aria-hidden="true">3</span></button>
+      <div class="pop pop--right notif" id="pop-notif">
+        <div class="notif__head"><b>Уведомления</b><span class="mono muted" style="font-size:12px">3 новых</span><button class="btn btn--ghost btn--xs" type="button" data-notif-read>Прочитать все</button></div>
+        <div class="notif__list"><a class="notif__item is-unread" href="../purchaser/cards.html"><div><p>Карта •• 1728: остаток лимита меньше 10%</p><time>Сегодня, 13:50</time></div></a><a class="notif__item is-unread" href="../purchaser/statistic.html"><div><p>Баланс договора Д-2024/117 близок к сигнальному лимиту</p><time>Сегодня, 12:38</time></div></a><a class="notif__item is-unread" href="../purchaser/documents.html"><div><p>Готов акт сверки за сентябрь</p><time>Сегодня, 11:26</time></div></a></div>
+      </div>
+    </div>
+    <div style="position:relative">
+      <button class="user-btn" type="button" data-pop="pop-user" aria-expanded="false" aria-controls="pop-user">
+        <span class="avatar" aria-hidden="true">АС</span>
+        <span class="user-btn__name">А. Смирнова<small>Покупатель</small></span>
+      </button>
+      <div class="pop pop--right" id="pop-user" style="min-width:230px">
+        <div class="opts" role="menu" aria-label="Профиль">
+          <a class="opt" role="menuitem" href="../profile.html"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Профиль</a>
+          <a class="opt" role="menuitem" href="../profile.html#t-notify"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg>Уведомления и рассылки</a>
+          <div class="opt-sep" role="separator"></div>
+          <a class="opt" role="menuitem" href="../index.html"><svg class="ico" aria-hidden="true"><use href="#i-logout"/></svg>Выйти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- @top:end -->
+    <main class="app-content" id="main">
+      <div class="phead">
+        <div>
+          <h1 class="phead__title">Реестр карт</h1>
+          <p class="phead__sub">Топливные карты организации: держатели, остатки лимитов, состояние. Нажмите на номер карты, чтобы открыть кошельки, транзакции и действия. Данные демонстрационные.</p>
+        </div>
+        <div class="tblock" aria-label="Паспорт раздела">
+          <div class="tblock__cell"><span class="tblock__k">Раздел</span><span class="tblock__v">ПК-02</span></div>
+          <div class="tblock__cell"><span class="tblock__k">Карт</span><span class="tblock__v" data-total>36</span></div>
+          <div class="tblock__cell"><span class="tblock__k">Обновлено</span><span class="tblock__v"><span class="live" aria-hidden="true"><span class="live__dot"></span></span>14:05</span></div>
+        </div>
+        <div class="phead__actions">
+          <div style="position:relative">
+            <button class="btn btn--primary btn--sm" type="button" data-pop="pop-group" aria-expanded="false" aria-controls="pop-group"><span>Групповые операции</span><svg class="ico" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+            <div class="pop" id="pop-group" style="min-width:260px">
+              <div class="opts" role="menu" aria-label="Групповые операции">
+                <button class="opt" role="menuitem" type="button" data-group="limit"><svg class="ico" aria-hidden="true"><use href="#i-limit"/></svg>Изменить лимиты</button>
+                <button class="opt" role="menuitem" type="button" data-group="block"><svg class="ico" aria-hidden="true"><use href="#i-block"/></svg>Заблокировать</button>
+                <a class="opt" role="menuitem" href="transfer-cards.html"><svg class="ico" aria-hidden="true"><use href="#i-transfer"/></svg>Переместить карты</a>
+                <a class="opt" role="menuitem" href="transfer-balances.html"><svg class="ico" aria-hidden="true"><use href="#i-swap"/></svg>Перенести остатки</a>
+                <div class="opt-sep" role="separator"></div>
+                <button class="opt opt--danger" role="menuitem" type="button" data-group="return"><svg class="ico" aria-hidden="true"><use href="#i-trash"/></svg>Сдать карты</button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn--outline btn--sm" type="button" data-export><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>Выгрузить в Excel</span></button>
+        </div>
+      </div>
+
+      <!-- Плитки работают как фильтр таблицы; повторный клик снимает фильтр -->
+      <div class="kpis" id="cards-kpis" role="group" aria-label="Быстрый фильтр по состоянию"></div>
+
+      <section class="dt" id="cards-table" data-page-size="15" aria-label="Реестр карт">
+        <div class="dt__bar">
+          <label class="in-wrap"><span class="sr-only">Поиск по номеру, держателю, госномеру</span><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><input class="in" type="search" placeholder="Номер, держатель, госномер" data-dt-search></label>
+          <div class="sel" data-select data-multi data-chips="1" data-placeholder="Все подразделения" style="width:220px" id="f-div">
+            <button class="sel__btn" type="button" data-pop="lb-div" aria-expanded="false" aria-controls="lb-div" aria-label="Фильтр: подразделение"><span class="sel__value"></span><svg class="ico" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+            <div class="pop" id="lb-div" style="min-width:240px"><div class="opts" role="listbox" aria-label="Подразделение"><div class="opt" role="option" data-value="Головное" aria-selected="false"><span class="opt__text">Головное</span></div><div class="opt" role="option" data-value="Автоколонна № 1" aria-selected="false"><span class="opt__text">Автоколонна № 1</span></div><div class="opt" role="option" data-value="Автоколонна № 2" aria-selected="false"><span class="opt__text">Автоколонна № 2</span></div><div class="opt" role="option" data-value="Филиал «Северный»" aria-selected="false"><span class="opt__text">Филиал «Северный»</span></div></div>
+              <div class="opts__foot"><button class="btn btn--ghost btn--xs" type="button" data-clear>Сбросить</button><button class="btn btn--ghost btn--xs" type="button" data-all>Выбрать все</button></div></div>
+          </div>
+          <button class="btn btn--ghost btn--xs" type="button" data-reset-filters hidden>Сбросить фильтры</button>
+          <span class="dt__spacer"></span>
+          <div class="seg" role="group" aria-label="Плотность строк" data-dt-density>
+            <button class="seg__btn" type="button" aria-pressed="true" data-density="normal">Обычно</button>
+            <button class="seg__btn" type="button" aria-pressed="false" data-density="compact">Плотно</button>
+          </div>
+        </div>
+        <div class="dt__bulk" hidden>
+          <span class="mono" data-dt-count>Выбрано: 0</span>
+          <button class="btn btn--outline btn--xs" type="button" data-group="limit"><svg class="ico" aria-hidden="true"><use href="#i-limit"/></svg><span>Изменить лимит</span></button>
+          <button class="btn btn--outline btn--xs" type="button" data-group="block"><svg class="ico" aria-hidden="true"><use href="#i-block"/></svg><span>Заблокировать</span></button>
+          <button class="btn btn--outline btn--xs" type="button" data-export-selected><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>Выгрузить</span></button>
+          <button class="btn btn--ghost btn--xs" type="button" data-dt-clear style="margin-left:auto">Снять выбор</button>
+        </div>
+        <div class="dt__scroll" style="--dt-max-h:calc(100svh - 260px)">
+          <table class="table table--pin">
+            <caption class="sr-only">Реестр карт (демо-данные). Столбцы сортируются.</caption>
+            <thead><tr>
+              <th class="col-check" scope="col"><label class="cb"><input type="checkbox" aria-label="Выбрать все на странице"><span class="cb__box"><svg viewBox="0 0 12 12"><path class="cb__tick" d="M2.5 6.2l2.3 2.3L9.5 3.5"/><path class="cb__dash" d="M3 6h6"/></svg></span></label></th>
+              <th scope="col" data-sort="text">Карта</th>
+              <th scope="col" data-sort="text">Подразделение</th>
+              <th scope="col" data-sort="num">Остаток основного лимита</th>
+              <th scope="col" class="num-cell" data-sort="num">Доп. лимит, л/сут</th>
+              <th scope="col" data-sort="num">Последнее использование</th>
+              <th scope="col" data-sort="text">Состояние</th>
+              <th class="col-actions" scope="col"><span class="sr-only">Действия</span></th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="pager"></div>
+        <template data-row-menu-tpl>
+          <div class="opts" role="menu" aria-label="Действия с картой">
+            <button class="opt" role="menuitem" type="button" data-action="open"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg>Кошельки и транзакции</button>
+            <button class="opt" role="menuitem" type="button" data-action="limit"><svg class="ico" aria-hidden="true"><use href="#i-limit"/></svg>Изменить лимит</button>
+            <button class="opt" role="menuitem" type="button" data-action="pin"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>Установить ПИН-код</button>
+            <button class="opt" role="menuitem" type="button" data-action="owner"><svg class="ico" aria-hidden="true"><use href="#i-edit"/></svg>Изменить имя владельца</button>
+            <div class="opt-sep" role="separator"></div>
+            <button class="opt opt--danger" role="menuitem" type="button" data-action="block"><svg class="ico" aria-hidden="true"><use href="#i-block"/></svg>Заблокировать</button>
+          </div>
+        </template>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- Карта: кошельки, лимиты, транзакции, события -->
+<dialog class="drawer drawer--wide" id="drw-card" aria-labelledby="drw-card-t">
+  <div class="dlg__inner">
+    <div class="dlg__head"><div><h2 class="dlg__title mono" id="drw-card-t">Карта</h2><p class="dlg__sub" data-d="sub"></p></div>
+      <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="dlg__body" style="display:grid;gap:20px">
+      <div data-d="banner"></div>
+      <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:20px;align-items:start" class="drw-card-top">
+        <div data-d="face"></div>
+        <dl class="info-grid" style="grid-template-columns:1fr 1fr;gap:14px 20px" data-d="kv"></dl>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Разделы карты">
+        <button class="tab" role="tab" id="tc-w" aria-controls="pc-w" aria-selected="true" type="button">Кошельки</button>
+        <button class="tab" role="tab" id="tc-t" aria-controls="pc-t" aria-selected="false" type="button">Транзакции <span class="tab__count" data-d="txc"></span></button>
+        <button class="tab" role="tab" id="tc-e" aria-controls="pc-e" aria-selected="false" type="button">События</button>
+      </div>
+      <div class="tabpanel" role="tabpanel" id="pc-w" aria-labelledby="tc-w"><div class="wallets" data-d="wallets"></div></div>
+      <div class="tabpanel" role="tabpanel" id="pc-t" aria-labelledby="tc-t" hidden><div class="dt"><div class="dt__scroll"><table class="table table--compact"><caption class="sr-only">Последние транзакции по карте</caption><thead><tr><th scope="col">Дата/время</th><th scope="col">Точка</th><th scope="col">Товар</th><th scope="col" class="num-cell">Объём, л</th><th scope="col" class="num-cell">Стоимость, ₽</th></tr></thead><tbody data-d="tx"></tbody></table></div></div></div>
+      <div class="tabpanel" role="tabpanel" id="pc-e" aria-labelledby="tc-e" hidden><ol class="timeline" data-d="events"></ol></div>
+    </div>
+    <div class="dlg__foot" data-d="foot"></div>
+  </div>
+</dialog>
+
+<!-- Изменение лимита: одна карта или выбранные -->
+<dialog class="dlg" id="dlg-limit" aria-labelledby="dlg-limit-t" data-static>
+  <form class="dlg__inner" method="dialog" novalidate id="form-limit">
+    <div class="dlg__head"><div><h2 class="dlg__title" id="dlg-limit-t">Изменить лимит</h2><p class="dlg__sub" data-limit-who></p></div>
+      <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="dlg__body"><div class="form-grid">
+      <div class="fld span-6"><label class="fld__label" for="lm-fuel">Кошелёк</label><select class="in" id="lm-fuel"></select></div>
+      <div class="fld span-6"><label class="fld__label" for="lm-period">Период</label><select class="in" id="lm-period"><option>Месяц</option><option>Неделя</option><option>Сутки</option></select></div>
+      <div class="fld span-6"><label class="fld__label" for="lm-main">Основной лимит, л <span class="fld__req" aria-hidden="true">*</span></label><input class="in in--mono" id="lm-main" inputmode="numeric" required pattern="[0-9]{1,5}" data-err="Целое число литров, до 99 999"><span class="fld__hint">Израсходованный объём сохранится</span><span class="fld__err"></span></div>
+      <div class="fld span-6"><label class="fld__label" for="lm-day">Доп. лимит, л в сутки</label><input class="in in--mono" id="lm-day" inputmode="numeric" pattern="[0-9]{0,4}" data-err="Целое число литров" placeholder="0 — без ограничения"><span class="fld__err"></span></div>
+      <div class="span-12 consequences"><span class="consequences__title">Что произойдёт</span><ul><li>Новый лимит начнёт действовать после записи на карту — обычно в течение 5 минут</li><li>Если остаток станет отрицательным, карта не будет обслуживаться до нового периода</li><li>Изменение попадёт в «Журнал операций» продавца</li></ul></div>
+    </div></div>
+    <div class="dlg__foot"><button class="btn btn--ghost btn--sm" type="button" data-close>Отмена</button><button class="btn btn--primary btn--sm" type="submit"><span>Сохранить лимит</span></button></div>
+  </form>
+</dialog>
+
+<!-- Блокировка: причина определяет, можно ли вернуть карту -->
+<dialog class="dlg dlg--sm" id="dlg-block" role="alertdialog" aria-labelledby="dlg-block-t" aria-describedby="dlg-block-d">
+  <form class="dlg__inner" method="dialog" novalidate id="form-block">
+    <div class="dlg__head" style="border-bottom:0;padding-bottom:0">
+      <span class="confirm__ico"><svg class="ico" aria-hidden="true"><use href="#i-block"/></svg></span>
+      <div><h2 class="dlg__title" id="dlg-block-t">Заблокировать карту?</h2><p class="dlg__sub" id="dlg-block-d" data-block-who></p></div>
+      <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="dlg__body" style="display:grid;gap:14px">
+      <fieldset class="reasons"><legend class="fld__label" style="margin-bottom:8px">Причина</legend>
+        <label class="radio"><input type="radio" name="reason" value="temp" checked><span class="radio__dot"></span><span>Временно<small>Карту можно будет разблокировать здесь же</small></span></label>
+        <label class="radio"><input type="radio" name="reason" value="lost"><span class="radio__dot"></span><span>Утеряна или украдена<small>Карта попадёт в чёрный список навсегда; для водителя выпустят новую</small></span></label>
+      </fieldset>
+      <div class="consequences"><span class="consequences__title">Что произойдёт</span><ul><li>Карта перестанет обслуживаться на всех точках через 1–5 минут</li><li>Остатки лимитов сохранятся</li></ul></div>
+    </div>
+    <div class="dlg__foot"><button class="btn btn--ghost btn--sm" type="button" data-close data-autofocus>Отмена</button><button class="btn btn--primary btn--sm" type="submit"><span data-block-cta>Заблокировать</span></button></div>
+  </form>
+</dialog>
+
+<script src="../data/demo.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/pa.js"></script>
+<script src="../js/cards.js"></script>
+</body>
+</html>
